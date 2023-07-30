@@ -28,7 +28,7 @@ import {
   CLEAR_ERROR,
 } from "../contants/postContants";
 
-const HOST_URL = process.env.REACT_APP_HOST_URL;
+const HOST_URL = "https://lookup-app-backend.vercel.app/";
 
 export const getPost = () => async (dispatch) => {
   try {
