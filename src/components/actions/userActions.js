@@ -21,6 +21,7 @@ import {
 } from "../contants/userContants";
 
 const HOST_URL = process.env.REACT_APP_HOST_URL;
+const CORS_URL = process.env.CORS_URL;
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -29,7 +30,7 @@ export const login = (email, password) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      `${HOST_URL}/auth/login`,
+      `${CORS_URL}${HOST_URL}/auth/login`,
       { email, password },
       config
     );
@@ -47,7 +48,7 @@ export const register = (userData) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      `${HOST_URL}/auth/register`,
+      `${CORS_URL}${HOST_URL}/auth/register`,
       userData,
       config
     );
@@ -62,7 +63,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(`${HOST_URL}/user`);
+    const { data } = await axios.get(`${CORS_URL}${HOST_URL}/user`);
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data });
   } catch (error) {
@@ -72,7 +73,7 @@ export const loadUser = () => async (dispatch) => {
 
 export const logoutUser = () => async (dispatch) => {
   try {
-    await axios.get(`${HOST_URL}/auth/logout`);
+    await axios.get(`${CORS_URL}${HOST_URL}/auth/logout`);
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
@@ -87,7 +88,7 @@ export const updateUser = (userId, userData) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.put(
-      `${HOST_URL}/user/${userId}`,
+      `${CORS_URL}${HOST_URL}/user/${userId}`,
       userData,
       config
     );
@@ -102,7 +103,7 @@ export const getUserDetail = (userId) => async (dispatch) => {
   try {
     dispatch({ type: GET_USER_REQUEST });
 
-    const { data } = await axios.get(`${HOST_URL}/user/${userId}`);
+    const { data } = await axios.get(`${CORS_URL}${HOST_URL}/user/${userId}`);
 
     dispatch({ type: GET_USER_SUCCESS, payload: data });
   } catch (error) {
