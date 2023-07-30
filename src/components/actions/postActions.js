@@ -28,13 +28,13 @@ import {
   CLEAR_ERROR,
 } from "../contants/postContants";
 
-const HOST_URL = "https://lookup-app-backend.vercel.app";
+// const HOST_URL = "https://lookup-app-backend.vercel.app";
 
 export const getPost = () => async (dispatch) => {
   try {
     dispatch({ type: ALL_POST_REQUEST });
 
-    const { data } = await axios.get(`${HOST_URL}/post`);
+    const { data } = await axios.get(`/post`);
 
     dispatch({
       type: ALL_POST_SUCCESS,
@@ -52,7 +52,7 @@ export const getOwnerPost = (id) => async (dispatch) => {
   try {
     dispatch({ type: OWNER_POST_REQUEST });
 
-    const { data } = await axios.get(`${HOST_URL}/post/owner`);
+    const { data } = await axios.get(`/post/owner`);
 
     dispatch({
       type: OWNER_POST_SUCCESS,
@@ -72,7 +72,7 @@ export const createPost = (postData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.post(`${HOST_URL}/post`, postData, config);
+    const { data } = await axios.post(`/post`, postData, config);
 
     dispatch({
       type: CREATE_POST_SUCCESS,
@@ -90,7 +90,7 @@ export const getPostDetail = (postId) => async (dispatch) => {
   try {
     dispatch({ type: GET_POST_DETAIL_REQUEST });
 
-    const { data } = await axios.get(`${HOST_URL}/post/${postId}`);
+    const { data } = await axios.get(`/post/${postId}`);
 
     dispatch({
       type: GET_POST_DETAIL_SUCCESS,
@@ -108,10 +108,7 @@ export const likePost = (postId, userId) => async (dispatch) => {
   try {
     dispatch({ type: LIKE_POST_REQUEST });
 
-    const { data } = await axios.post(
-      `${HOST_URL}/post/like/like/${postId}`,
-      userId
-    );
+    const { data } = await axios.post(`/post/like/like/${postId}`, userId);
 
     dispatch({ type: LIKE_POST_SUCCESS, payload: data });
   } catch (error) {
@@ -123,10 +120,7 @@ export const dislikePost = (postId, userId) => async (dispatch) => {
   try {
     dispatch({ type: DISLIKE_POST_REQUEST });
 
-    const { data } = await axios.post(
-      `${HOST_URL}/post/like/unlike/${postId}`,
-      userId
-    );
+    const { data } = await axios.post(`/post/like/unlike/${postId}`, userId);
 
     dispatch({ type: DISLIKE_POST_SUCCESS, payload: data });
   } catch (error) {
@@ -138,7 +132,7 @@ export const getPostProfile = (userId) => async (dispatch) => {
   try {
     dispatch({ type: GET_POST_PROFILE_REQUEST });
 
-    const { data } = await axios.get(`${HOST_URL}/post/profile/${userId}`);
+    const { data } = await axios.get(`/post/profile/${userId}`);
 
     dispatch({ type: GET_POST_PROFILE_SUCCESS, payload: data });
   } catch (error) {
@@ -156,7 +150,7 @@ export const createComment = (userId, postId, content) => async (dispatch) => {
     const config = { headers: { "Content-Type": "application/json" } };
 
     const { data } = await axios.post(
-      `${HOST_URL}/post/comment/${postId}`,
+      `/post/comment/${postId}`,
       { userId, postId, content },
       config
     );
