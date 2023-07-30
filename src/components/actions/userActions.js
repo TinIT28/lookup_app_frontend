@@ -28,7 +28,7 @@ export const login = (email, password) => async (dispatch) => {
 
     const config = {
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
+      withCredentials: true,
     };
 
     const { data } = await axios.post(
@@ -65,7 +65,9 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(`${HOST_URL}/user`);
+    const { data } = await axios.get(`${HOST_URL}/user`, {
+      withCredentials: true,
+    });
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data });
   } catch (error) {
