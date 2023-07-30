@@ -65,9 +65,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(`${HOST_URL}/user`, {
-      withCredentials: true,
-    });
+    const { data } = await axios.get(`${HOST_URL}/user`);
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data });
   } catch (error) {
