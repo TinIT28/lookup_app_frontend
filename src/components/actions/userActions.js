@@ -20,7 +20,7 @@ import {
   CLEAR_ERROR,
 } from "../contants/userContants";
 
-// const HOST_URL = "https://lookup-app-backend.vercel.app";
+const HOST_URL = "https://lookup-app-backend.vercel.app";
 
 export const login = (email, password) => async (dispatch) => {
   try {
@@ -31,7 +31,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      `/auth/login`,
+      `${HOST_URL}/auth/login`,
       { email, password },
       config
     );
@@ -48,7 +48,11 @@ export const register = (userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.post(`/auth/register`, userData, config);
+    const { data } = await axios.post(
+      `${HOST_URL}/auth/register`,
+      userData,
+      config
+    );
 
     dispatch({ type: REGISTER_SUCCESS, payload: data.user });
   } catch (error) {
@@ -60,7 +64,7 @@ export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
 
-    const { data } = await axios.get(`/user`);
+    const { data } = await axios.get(`${HOST_URL}/user`);
 
     dispatch({ type: LOAD_USER_SUCCESS, payload: data });
   } catch (error) {
@@ -70,7 +74,7 @@ export const loadUser = () => async (dispatch) => {
 
 export const logoutUser = () => async (dispatch) => {
   try {
-    await axios.get(`/auth/logout`);
+    await axios.get(`${HOST_URL}/auth/logout`);
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
@@ -84,7 +88,11 @@ export const updateUser = (userId, userData) => async (dispatch) => {
 
     const config = { headers: { "Content-Type": "application/json" } };
 
-    const { data } = await axios.put(`/user/${userId}`, userData, config);
+    const { data } = await axios.put(
+      `${HOST_URL}/user/${userId}`,
+      userData,
+      config
+    );
 
     dispatch({ type: UPDATE_USER_SUCCESS, payload: data });
   } catch (error) {
@@ -96,7 +104,7 @@ export const getUserDetail = (userId) => async (dispatch) => {
   try {
     dispatch({ type: GET_USER_REQUEST });
 
-    const { data } = await axios.get(`/user/${userId}`);
+    const { data } = await axios.get(`${HOST_URL}/user/${userId}`);
 
     dispatch({ type: GET_USER_SUCCESS, payload: data });
   } catch (error) {
