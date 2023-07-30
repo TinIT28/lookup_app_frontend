@@ -20,7 +20,7 @@ import {
   CLEAR_ERROR,
 } from "../contants/userContants";
 
-const HOST_URL = "https://lookup-app-backend.vercel.app/";
+const HOST_URL = "https://lookup-app-backend.vercel.app";
 
 export const login = (email, password) => async (dispatch) => {
   try {
