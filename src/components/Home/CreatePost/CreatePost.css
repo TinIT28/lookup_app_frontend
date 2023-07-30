@@ -1,0 +1,33 @@
+.create_post_input {
+    margin-bottom: 20px;
+    width: 500px;
+    height: 50px;
+    border-radius: 20px;
+    border: 1px solid #C2C2C2;
+    outline: none;
+    padding-left: 10px;
+}
+
+.icon_create_post_top {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.create_post_icon {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.create_post_icon_detail {
+    display: flex;
+    margin-bottom: 0px;
+    justify-content: center;
+    align-items: center;
+    background-color: #F3F3F3;
+    width: 100px;
+    height: 30px;
+    border-radius: 20px;
+    cursor: pointer;
+}

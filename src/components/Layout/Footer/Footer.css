@@ -1,0 +1,69 @@
+.Footer {
+    width: auto;
+    height: 360px;
+    background-color: #112D4E;
+    display: flex;
+    flex-direction: column;
+
+}
+
+.Footer_Item_Top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.Footer_Item {
+    text-decoration: none;
+    color: #fff;
+    margin: 15px;
+    display: flex;
+
+}
+
+.Description {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    margin-top: 30px;
+}
+
+.Footer_Detail {
+    padding: 5px;
+}
+
+.Icon_Detail {
+    font-size: 30px;
+    padding-left: 10px;
+}
+
+.Footer_Contact {
+    display: flex;
+    padding: 10px;
+}
+
+.Footer_Download {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.footer-menu ul {
+    margin: 0px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.footer-menu ul li {
+    list-style: none;
+}
+
+.footer-menu ul li a {
+    padding: 0.5rem 1rem;
+    display: block;
+    color: #8c8c8c;
+  }
