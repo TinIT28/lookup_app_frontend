@@ -20,7 +20,7 @@ import {
   CLEAR_ERROR,
 } from "../contants/userContants";
 
-const HOST_URL = "http://34.170.4.127:8000";
+const HOST_URL = process.env.REACT_APP_HOST_URL;
 
 export const login = (email, password) => async (dispatch) => {
   try {
