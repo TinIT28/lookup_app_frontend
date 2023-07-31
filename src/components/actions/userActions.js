@@ -58,6 +58,10 @@ export const register = (userData) => async (dispatch) => {
       config
     );
 
+    const jwt = data.jwt;
+
+    sessionStorage.setItem("jwt", jwt);
+
     dispatch({ type: REGISTER_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({ type: REGISTER_FAIL, payload: error.response.data.message });
