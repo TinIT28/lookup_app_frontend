@@ -36,6 +36,10 @@ export const login = (email, password) => async (dispatch) => {
       config
     );
 
+    const jwt = data.jwt;
+
+    sessionStorage.setItem("jwt", jwt);
+
     dispatch({ type: LOGIN_SUCCESS, payload: data.user });
   } catch (error) {
     dispatch({ type: LOGIN_FAIL, payload: error.response.data.message });
@@ -63,6 +67,16 @@ export const register = (userData) => async (dispatch) => {
 export const loadUser = () => async (dispatch) => {
   try {
     dispatch({ type: LOAD_USER_REQUEST });
+
+    const jwt = sessionStorage.getItem("jwt");
+
+    // Set the JWT token as a custom header in the axios request
+    if (jwt) {
+      axios.defaults.headers.common["Authorization"] = `Bearer ${jwt}`;
+    } else {
+      // If there's no token, remove the Authorization header (optional)
+      delete axios.defaults.headers.common["Authorization"];
+    }
 
     const { data } = await axios.get(`${HOST_URL}/user`);
 
