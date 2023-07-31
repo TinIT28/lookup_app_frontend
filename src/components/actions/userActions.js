@@ -90,7 +90,7 @@ export const logoutUser = () => async (dispatch) => {
   try {
     await axios.get(`${HOST_URL}/auth/logout`);
 
-    sessionStorage.clear();
+    sessionStorage.setItem("jwt", null);
 
     dispatch({ type: LOGOUT_SUCCESS });
   } catch (error) {
