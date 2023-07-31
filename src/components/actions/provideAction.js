@@ -11,7 +11,7 @@ import {
   GET_WARD_FAIL,
 } from "../contants/provideContants";
 
-const provideUrl = "/api";
+const provideUrl = "https://provinces.open-api.vn/api";
 
 export const getProvide = () => async (dispatch) => {
   try {
